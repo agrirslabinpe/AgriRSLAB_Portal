@@ -299,3 +299,8 @@ A equipe **404 Not Found** é constituída de alunos do primeiro semestre do cur
 | Dev Team      | William Max dos Santos Silva  | [GitHub](https://github.com/WilliamM4x) / [LinkedIn](https://www.linkedin.com/in/william-max-7b8036140/) |
 
 [↑ Voltar ao topo](#topo)
+
+## 🐳 Como rodar com Docker
+
+```bash
+docker compose up --build

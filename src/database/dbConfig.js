@@ -12,14 +12,18 @@ const pool = new Pool({
     port: process.env.DB_PORT || 5432, // Porta padrão do PostgreSQL
 });
 
-// Um teste simples de conexão (opcional)
-pool.query('SELECT NOW()', (err, res) => {
-    if (err) {
-        console.error('❌ Erro ao conectar ao PostgreSQL:', err.message);
-    } else {
-        console.log('✅ Conexão com PostgreSQL estabelecida com sucesso:', res.rows[0].now);
-    }
-});
+const connectWithRetry = () => {
+    pool.query('SELECT NOW()', (err, res) => {
+        if (err) {
+            console.error('Banco ainda não disponível, tentando novamente...');
+            setTimeout(connectWithRetry, 3000);
+        } else {
+            console.log('Conexão com PostgreSQL estabelecida:', res.rows[0].now);
+        }
+    });
+};
+
+connectWithRetry();
 
 module.exports = {
     pool,

@@ -1,4 +1,5 @@
 node_modules
+.env
 /src/upload/*.jpg
 /src/upload/*.jpeg
 /src/upload/*.png
@@ -24,3 +25,6 @@ node_modules
 /src/upload/projetos/*.pdf
 
 !/upload/.gitkeep
+.env
+*.zip
+.env
